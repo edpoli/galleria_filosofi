@@ -43,7 +43,7 @@ function App() {
         <h3> <em> GALLERIA FILOSOFI </em> </h3>
       </div>
 
-      <div>
+      <div className='img-container'>
         <img className='img-filosofo' src={filosofo.immagine} alt={filosofo.immagine} />
       </div>
 
