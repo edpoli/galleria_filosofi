@@ -22,7 +22,17 @@ const filosofi = [{
 
 function App() {
   const [indice, setIndice] = useState(0)
+  const [mostra, setMostra] = useState(false)
   const filosofo = filosofi[indice]
+  const avanti = () => {
+    setIndice(indice + 1)
+    setMostra(false)
+  }
+
+  const indietro = () => {
+    setIndice(indice - 1)
+    setMostra(false)
+  }
 
   return (
     <>
@@ -36,25 +46,36 @@ function App() {
       <div>
         <img className='img-filosofo' src={filosofo.immagine} alt={filosofo.immagine} />
       </div>
+
+      <div>
+        {filosofo.nome}
+      </div>
+
       <div className='libro'>
         {filosofo.libro}
       </div>
       <hr />
       <div className='citazione'>
-        "{filosofo.citazione}"
+        <button onClick={() => setMostra(!mostra)}>
+          {mostra ? "Nascondi" : "Mostra citazione"}
+        </button>
+
+        {mostra && <p>{filosofo.citazione}</p>}
+
       </div>
+
 
       <div className="btn-index" >
         <button
           className='btn-grad'
-          onClick={() => setIndice(indice - 1)}
+          onClick={indietro}
           disabled={indice === 0}
         > Indietro
         </button>
 
         <button
           className='btn-grad'
-          onClick={() => setIndice(indice + 1)}
+          onClick={avanti}
           disabled={indice === filosofi.length - 1}
         >
           Avanti
